@@ -20,7 +20,7 @@ def removeBracket(s):
     return s if start_pos == 0 else s[start_pos: end_pos]
 
 
-def email2id(s, users):
+def email2id(s):
     key_end = s.find('@')
     name = s[:key_end]
     return name
@@ -42,8 +42,7 @@ def START(message, address=None, host=None):
     if len(message['subject']) >= 11 and message['subject'][:11] == 'ADD TO LIST':
         with open('/home/team7/lists.json', 'w') as listfp:
             # get user
-            user_end = message['From'].find('@')
-            user = message['From'][: user_end]
+            user = email2id(message['From'])
             # find list key
             key_start = message['subject'].find('"') + 1
             key_end = message['subject'].find('"', key_start)
@@ -56,17 +55,13 @@ def START(message, address=None, host=None):
     elif message['subject'] == 'BAN':
         with open('/home/team7/lists.json', 'w') as listfp:
             # get user
-            user_end = message['From'].find('@')
-            user = message['From'][: user_end]
+            user = email2id(message['From'])
             lists[user]['BLACKLIST'].append(email2id(message['To']))
             json.dump(lists, listfp, indent=4)
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
         with open('/home/team7/users.json', 'w') as userfp:
-            key_end = message['From'].find('@')
-            if key_end == -1:
-                return START
-            user = message['From'][: key_end]
+            user = email2id(message['From'])
             if user in users['register']:
                 # already registered
                 content = 'Already registered.'
@@ -89,12 +84,9 @@ def START(message, address=None, host=None):
 
             return START
 
-    key_end = message['To'].find('@')
-    if key_end == -1:
-        return START
-    user = message['To'][: key_end]
-    for k in lists[user].keys():
-        if email2id(message['From'], users) in lists[user][k]:
+    userTo, userFrom = email2id(message['To']), email2id(message['From'])
+    for k in lists[userTo].keys():
+        if userFrom in lists[userTo][k]:
             if k == "BLACKLIST":
                 print("DISCARDED")
                 return START
