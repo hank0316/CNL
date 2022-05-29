@@ -20,7 +20,7 @@ def removeBracket(s):
     return s if start_pos == 0 else s[start_pos: end_pos]
 
 
-def email2id(s, all_user):
+def email2id(s, users):
     key_end = s.find('@')
     name = s[:key_end]
     return name
@@ -28,19 +28,19 @@ def email2id(s, all_user):
 
 @route("(address)@(host)", address=".+")
 def START(message, address=None, host=None):
-    with open('/home/team7/userlist.json', 'r') as listfp:
-        user_list = json.load(listfp)
-        user_list = defaultdict(lambda: defaultdict(list), user_list)
+    with open('/home/team7/lists.json', 'r') as listfp:
+        lists = json.load(listfp)
+        lists = defaultdict(lambda: defaultdict(list), lists)
 
-    with open('/home/team7/all_user.json', 'r') as userfp:
-        all_user = json.load(userfp)
-        all_user = defaultdict(dict, all_user)
+    with open('/home/team7/users.json', 'r') as userfp:
+        users = json.load(userfp)
+        users = defaultdict(dict, users)
 
     message['From'] = removeBracket(message['From'])
     message['To'] = removeBracket(message['To'])
 
     if len(message['subject']) >= 11 and message['subject'][:11] == 'ADD TO LIST':
-        with open('/home/team7/userlist.json', 'w') as listfp:
+        with open('/home/team7/lists.json', 'w') as listfp:
             # get user
             user_end = message['From'].find('@')
             user = message['From'][: user_end]
@@ -50,25 +50,25 @@ def START(message, address=None, host=None):
             if key_end == -1:
                 return START
             key = message['subject'][key_start: key_end]
-            user_list[user][key].append(email2id(message['To']))
-            json.dump(user_list, listfp, indent=4)
+            lists[user][key].append(email2id(message['To']))
+            json.dump(lists, listfp, indent=4)
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
-        with open('/home/team7/all_user.json', 'w') as userfp:
+        with open('/home/team7/users.json', 'w') as userfp:
             key_end = message['From'].find('@')
             if key_end == -1:
                 return START
             user = message['From'][: key_end]
-            if user in all_user['register']:
+            if user in users['register']:
                 # already registered
                 content = 'Already registered.'
             else:
-                all_user['register'][user] = message['From']
+                users['register'][user] = message['From']
                 content = 'Registeration successful.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
                     print(f"{user}@example.com {user}", file=postfixRegister)
                 os.system("postmap /etc/postfix/virtual")
-            json.dump(all_user, userfp, indent=4)
+            json.dump(users, userfp, indent=4)
             response = MailResponse(
                 Body=content,
                 To=message['From'],
@@ -85,8 +85,8 @@ def START(message, address=None, host=None):
     if key_end == -1:
         return START
     user = message['To'][: key_end]
-    for k in user_list[user].keys():
-        if email2id(message['From'], all_user) in user_list[user][k]:
+    for k in lists[user].keys():
+        if email2id(message['From'], users) in lists[user][k]:
             if k == "BLACKLIST":
                 print("DISCARDED")
                 return START
@@ -100,7 +100,7 @@ def START(message, address=None, host=None):
     # message['subject'] = "[SPAM] " + message['subject']
     response = MailResponse(
         Body=message.body(),
-        To=all_user['register'][user],
+        To=users['register'][user],
         From=message['From'],
         Subject=message['subject'],
         Html=f'<html><meta charset="UTF-8">你好</html>'
