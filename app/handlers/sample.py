@@ -53,6 +53,14 @@ def START(message, address=None, host=None):
             lists[user][key].append(email2id(message['To']))
             json.dump(lists, listfp, indent=4)
             return START
+    elif message['subject'] == 'BAN':
+        with open('/home/team7/lists.json', 'w') as listfp:
+            # get user
+            user_end = message['From'].find('@')
+            user = message['From'][: user_end]
+            lists[user]['BLACKLIST'].append(email2id(message['To']))
+            json.dump(lists, listfp, indent=4)
+            return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
         with open('/home/team7/users.json', 'w') as userfp:
             key_end = message['From'].find('@')
