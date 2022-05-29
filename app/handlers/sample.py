@@ -38,38 +38,34 @@ def START(message, address=None, host=None):
 
     message['From'] = removeBracket(message['From'])
     message['To'] = removeBracket(message['To'])
+    userTo, userFrom = email2id(message['To']), email2id(message['From'])
 
     if len(message['subject']) >= 11 and message['subject'][:11] == 'ADD TO LIST':
         with open('/home/team7/lists.json', 'w') as listfp:
-            # get user
-            user = email2id(message['From'])
             # find list key
             key_start = message['subject'].find('"') + 1
             key_end = message['subject'].find('"', key_start)
             if key_end == -1:
                 return START
             key = message['subject'][key_start: key_end]
-            lists[user][key].append(email2id(message['To']))
+            lists[userFrom][key].append(userTo)
             json.dump(lists, listfp, indent=4)
             return START
     elif message['subject'] == 'BAN':
         with open('/home/team7/lists.json', 'w') as listfp:
-            # get user
-            user = email2id(message['From'])
-            lists[user]['BLACKLIST'].append(email2id(message['To']))
+            lists[userFrom]['BLACKLIST'].append(userTo)
             json.dump(lists, listfp, indent=4)
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
         with open('/home/team7/users.json', 'w') as userfp:
-            user = email2id(message['From'])
-            if user in users['register']:
+            if userFrom in users['register']:
                 # already registered
                 content = 'Already registered.'
             else:
-                users['register'][user] = message['From']
+                users['register'][userFrom] = message['From']
                 content = 'Registeration successful.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
-                    print(f"{user}@example.com {user}", file=postfixRegister)
+                    print(f"{userFrom}@example.com {userFrom}", file=postfixRegister)
                 os.system("postmap /etc/postfix/virtual")
             json.dump(users, userfp, indent=4)
             response = MailResponse(
@@ -84,7 +80,6 @@ def START(message, address=None, host=None):
 
             return START
 
-    userTo, userFrom = email2id(message['To']), email2id(message['From'])
     for k in lists[userTo].keys():
         if userFrom in lists[userTo][k]:
             if k == "BLACKLIST":
@@ -100,7 +95,7 @@ def START(message, address=None, host=None):
     # message['subject'] = "[SPAM] " + message['subject']
     response = MailResponse(
         Body=message.body(),
-        To=users['register'][user],
+        To=users['register'][userTo],
         From=message['From'],
         Subject=message['subject'],
         Html=f'<html><meta charset="UTF-8">你好</html>'
