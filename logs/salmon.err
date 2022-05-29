@@ -1,0 +1,75 @@
+Traceback (most recent call last):
+  File "/usr/local/bin/salmon", line 8, in <module>
+    sys.exit(main())
+  File "/usr/lib/python3/dist-packages/click/core.py", line 764, in __call__
+    return self.main(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/click/core.py", line 717, in main
+    rv = self.invoke(ctx)
+  File "/usr/lib/python3/dist-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python3/dist-packages/click/core.py", line 956, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/lib/python3/dist-packages/click/core.py", line 555, in invoke
+    return callback(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/commands.py", line 157, in start
+    utils.start_server(pid, force, chroot, chdir, uid, gid, umask,
+  File "/usr/local/lib/python3.8/dist-packages/salmon/utils.py", line 129, in start_server
+    settings = settings_loader()
+  File "/usr/local/lib/python3.8/dist-packages/salmon/commands.py", line 158, in <lambda>
+    lambda: utils.import_settings(True, boot_module=boot), debug, daemon)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/utils.py", line 36, in import_settings
+    importlib.import_module(boot_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/team7/test_project/config/boot.py", line 21, in <module>
+    Router.load(settings.handlers)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 416, in load
+    __import__(module, globals(), locals())
+  File "/home/team7/test_project/app/handlers/sample.py", line 93
+    label = classifier(message)
+    ^
+SyntaxError: invalid syntax
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",
+/usr/local/lib/python3.8/dist-packages/salmon/encoding.py:303: UnicodeWarning: You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.
+  warnings.warn("You are adding text that is neither ASCII nor UTF-8. Please reconsider your choice.",

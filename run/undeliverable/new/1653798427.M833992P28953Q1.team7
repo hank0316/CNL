@@ -1,0 +1,16 @@
+Received: from [10.5.6.198] (unknown [10.5.6.198])
+	by mail.example.com (Postfix) with ESMTP id 9538761607
+	for <b08902020@example.com>; Sun, 29 May 2022 04:27:07 +0000 (UTC)
+Message-Id: <2e5d92d7-0403-c861-b95a-a63eb1d3c4ee@example.com>
+Date: Sun, 29 May 2022 12:27:07 +0800
+Mime-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Content-Language: en-US
+To: b08902020@example.com
+From: hank@example.com
+Subject: ADD TO LIST "TEST"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+
+hi

@@ -1,0 +1,10 @@
+Received: from unknown (unknown [10.5.6.198])
+	by mail.example.com (Postfix) with SMTP id 6285061661
+	for <admin@example.com>; Sat, 28 May 2022 11:01:35 +0000 (UTC)
+From: hank@example.com
+To: team7@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+I'm hank.

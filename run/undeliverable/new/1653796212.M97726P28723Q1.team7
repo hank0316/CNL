@@ -1,0 +1,16 @@
+Received: from [10.5.6.198] (unknown [10.5.6.198])
+	by mail.example.com (Postfix) with ESMTP id 2123A61605
+	for <b08902035@example.com>; Sun, 29 May 2022 03:49:46 +0000 (UTC)
+Message-Id: <9db4e81e-582d-9755-21aa-b7cf78b9ece2@ntu.edu.tw>
+Date: Sun, 29 May 2022 11:49:46 +0800
+Mime-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Content-Language: en-US
+To: b08902035@example.com
+From: hank@example.com
+Content-Transfer-Encoding: 7bit
+Subject: [SPAM] hello
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+
+gggggwwww

@@ -1,0 +1,13 @@
+Received: from localhost (localhost [127.0.0.1])
+	by mail.example.com (Postfix) with SMTP id 7BC6963D6C
+	for <why@example.com>; Sat, 28 May 2022 15:05:00 +0000 (UTC)
+Subject: ADD TO LIST "BLACKLIST"
+Message-Id: <20220528150500.7BC6963D6C@mail.example.com>
+Date: Sat, 28 May 2022 15:05:00 +0000 (UTC)
+From: hank@example.com
+To: why@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+sddf

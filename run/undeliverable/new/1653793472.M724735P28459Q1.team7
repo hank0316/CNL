@@ -1,0 +1,16 @@
+Received: from [10.5.6.198] (unknown [10.5.6.198])
+	by mail.example.com (Postfix) with ESMTP id A309261603
+	for <admin@example.com>; Sun, 29 May 2022 03:04:32 +0000 (UTC)
+Message-Id: <bb42414b-b3d5-86a9-0b6b-7176769cc365@example.com>
+Date: Sun, 29 May 2022 11:04:32 +0800
+Mime-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Content-Language: en-US
+To: admin@example.com
+From: qpoi@example.com
+Subject: REGISTER
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+
+Hi admin.

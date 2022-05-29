@@ -1,0 +1,9 @@
+MAIL FROM: hank@example.com
+RCPT TO: why@example.com
+DATA
+Subject: ADD TO LIST "BLACKLIST"
+
+sddf
+.
+QUIT
+

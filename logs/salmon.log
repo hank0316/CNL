@@ -1,0 +1,604 @@
+2022-05-28 15:12:00,863 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-28 15:12:54,121 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55462), From: b'<why@example.com>', to To b'<team7@example.com>'.
+2022-05-28 15:12:54,123 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-28 15:13:16,552 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-28 15:15:11,348 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55488), From: b'<why@example.com>', to To b'<team7@example.com>'.
+2022-05-28 15:15:11,541 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-28 15:15:11,568 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 16, in START
+    user_list = json.load(fp)
+  File "/usr/lib/python3.8/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-05-28 15:18:17,251 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-28 15:18:27,623 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55496), From: b'<hank@example.com>', to To b'<why@example.com>'.
+2022-05-28 15:18:27,624 - routing - DEBUG - Matched 'why@example.com' against START.
+2022-05-28 15:18:27,624 - routing - DEBUG - Message to why@example.com was handled by app.handlers.sample.START
+2022-05-28 15:19:23,024 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55498), From: b'<why@example.com>', to To b'<team7@example.com>'.
+2022-05-28 15:19:23,025 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-28 15:19:46,425 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 02:56:23,853 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 02:58:42,385 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 02:59:25,100 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:04:32,716 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55564), From: b'<qpoi@example.com>', to To b'<team7@example.com>'.
+2022-05-29 03:04:32,717 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:04:32,727 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 57, in START
+    relay.deliver(response)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/server.py", line 131, in deliver
+    relay_host.sendmail(sender, recipient, str(message))
+  File "/usr/lib/python3.8/smtplib.py", line 894, in sendmail
+    raise SMTPRecipientsRefused(senderrs)
+smtplib.SMTPRecipientsRefused: {'qpoi@example.com': (550, b'5.1.1 <qpoi@example.com>: Recipient address rejected: User unknown in local recipient table')}
+2022-05-29 03:17:24,230 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:17:45,689 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55572), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:17:45,690 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:17:45,697 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:20:27,671 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:21:23,148 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55580), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:21:23,149 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:21:23,163 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:22:08,058 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55586), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:22:08,058 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:22:08,076 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:22:55,665 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:24:36,243 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:25:00,017 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55592), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:25:00,018 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:25:00,026 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:33:50,227 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55600), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:33:50,228 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:33:50,235 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:43:40,707 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:44:08,392 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55608), From: b'<b08902035@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 03:44:08,394 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 03:44:08,409 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 03:49:46,160 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55616), From: b'<hank@example.com>', to To b'<b08902035@example.com>'.
+2022-05-29 03:49:46,161 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 03:50:12,120 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 80, in START
+    Html=f'<html><body>{content}</body></html>'
+UnboundLocalError: local variable 'content' referenced before assignment
+2022-05-29 03:51:02,792 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 03:51:31,265 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55640), From: b'<hank@example.com>', to To b'<b08902035@example.com>'.
+2022-05-29 03:51:31,266 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 03:51:55,070 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 03:55:14,685 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55670), From: b'<b08902035@ntu.edu.tw>', to To b'<hank@example.com>'.
+2022-05-29 03:55:14,814 - routing - DEBUG - Matched 'hank@example.com' against START.
+2022-05-29 03:55:14,819 - routing - DEBUG - Message to hank@example.com was handled by app.handlers.sample.START
+2022-05-29 03:56:12,379 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55674), From: b'<hank@example.com>', to To b'<b08902035@example.com>'.
+2022-05-29 03:56:12,381 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 03:56:39,565 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 03:59:34,918 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55700), From: b'<hank@gmail.com>', to To b'<b08902035@example.com>'.
+2022-05-29 03:59:35,011 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 03:59:35,031 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:01:42,301 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55702), From: b'<b08902035@ntu.edu.tw>', to To b'<hank@example.com>'.
+2022-05-29 04:01:42,303 - routing - DEBUG - Matched 'hank@example.com' against START.
+2022-05-29 04:01:42,303 - routing - DEBUG - Message to hank@example.com was handled by app.handlers.sample.START
+2022-05-29 04:02:40,426 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55704), From: b'<hank@example.com>', to To b'<b08902035@example.com>'.
+2022-05-29 04:02:40,428 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:03:14,499 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:10:57,784 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:13:00,677 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55732), From: b'<b08902020@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 04:13:00,678 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 04:13:00,686 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 04:16:41,135 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55740), From: b'<b08902020@ntu.edu.tw>', to To b'<team7@example.com>'.
+2022-05-29 04:16:41,136 - routing - DEBUG - Matched 'team7@example.com' against START.
+2022-05-29 04:16:41,161 - routing - DEBUG - Message to team7@example.com was handled by app.handlers.sample.START
+2022-05-29 04:18:16,549 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55748), From: b'<hank@example.com>', to To b'<b08902020@example.com>'.
+2022-05-29 04:18:16,549 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 04:18:17,413 - filelock - DEBUG - Attempting to acquire lock 140071660469936 on /root/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
+2022-05-29 04:18:17,414 - filelock - DEBUG - Lock 140071660469936 acquired on /root/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
+2022-05-29 04:18:18,276 - filelock - DEBUG - Attempting to release lock 140071660469936 on /root/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
+2022-05-29 04:18:18,276 - filelock - DEBUG - Lock 140071660469936 released on /root/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
+2022-05-29 04:18:19,121 - filelock - DEBUG - Attempting to acquire lock 140071651541680 on /root/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
+2022-05-29 04:18:19,121 - filelock - DEBUG - Lock 140071651541680 acquired on /root/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
+2022-05-29 04:18:19,958 - filelock - DEBUG - Attempting to release lock 140071651541680 on /root/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
+2022-05-29 04:18:19,958 - filelock - DEBUG - Lock 140071651541680 released on /root/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
+2022-05-29 04:18:21,637 - filelock - DEBUG - Attempting to acquire lock 140071660335216 on /root/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
+2022-05-29 04:18:21,639 - filelock - DEBUG - Lock 140071660335216 acquired on /root/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
+2022-05-29 04:18:23,100 - filelock - DEBUG - Attempting to release lock 140071660335216 on /root/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
+2022-05-29 04:18:23,100 - filelock - DEBUG - Lock 140071660335216 released on /root/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
+2022-05-29 04:18:23,965 - filelock - DEBUG - Attempting to acquire lock 140071660335744 on /root/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
+2022-05-29 04:18:23,966 - filelock - DEBUG - Lock 140071660335744 acquired on /root/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
+2022-05-29 04:18:25,646 - filelock - DEBUG - Attempting to release lock 140071660335744 on /root/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
+2022-05-29 04:18:25,647 - filelock - DEBUG - Lock 140071660335744 released on /root/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
+2022-05-29 04:18:30,926 - filelock - DEBUG - Attempting to acquire lock 140071639420736 on /root/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
+2022-05-29 04:18:30,927 - filelock - DEBUG - Lock 140071639420736 acquired on /root/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
+2022-05-29 04:19:09,454 - filelock - DEBUG - Attempting to release lock 140071639420736 on /root/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
+2022-05-29 04:19:09,454 - filelock - DEBUG - Lock 140071639420736 released on /root/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
+2022-05-29 04:19:23,045 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 04:25:30,373 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:27:07,829 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55786), From: b'<hank@example.com>', to To b'<b08902020@example.com>'.
+2022-05-29 04:27:07,830 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 04:27:07,838 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 20, in START
+    user_list = defaultdict(defaultdict(list), user_list)
+TypeError: first argument must be callable or None
+2022-05-29 04:30:29,065 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:31:11,166 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55788), From: b'<hank@example.com>', to To b'<b08902020@example.com>'.
+2022-05-29 04:31:11,167 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 04:31:11,169 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 04:38:23,664 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:39:19,598 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55790), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:39:19,599 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:39:42,350 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:41:21,231 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55820), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:41:21,358 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:41:46,494 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:42:16,008 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55848), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:42:16,077 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:42:45,481 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:43:16,526 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:44:13,911 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:44:32,736 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55878), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:44:32,737 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:44:56,738 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:49:53,030 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:50:21,233 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55908), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:50:21,234 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:50:45,309 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:54:06,215 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:54:37,919 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55938), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:54:37,920 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:54:37,928 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 89, in START
+    if _2id(message['From'], all_user) in user_list[user][k]:
+  File "/home/team7/test_project/app/handlers/sample.py", line 22, in _2id
+    key_end = message['To'].find('@')
+NameError: name 'message' is not defined
+2022-05-29 04:55:44,664 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:56:10,207 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55940), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:56:10,210 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:56:33,346 - chardet.charsetprober - DEBUG - EUC-JP Japanese prober hit error at byte 1
+2022-05-29 04:56:33,350 - chardet.charsetprober - DEBUG - GB2312 Chinese prober hit error at byte 4
+2022-05-29 04:56:33,351 - chardet.charsetprober - DEBUG - EUC-KR Korean prober hit error at byte 1
+2022-05-29 04:56:33,351 - chardet.charsetprober - DEBUG - CP949 Korean prober hit error at byte 4
+2022-05-29 04:56:33,352 - chardet.charsetprober - DEBUG - Big5 Chinese prober hit error at byte 1
+2022-05-29 04:56:33,352 - chardet.charsetprober - DEBUG - EUC-TW Taiwan prober hit error at byte 1
+2022-05-29 04:56:33,366 - chardet.charsetprober - DEBUG - utf-8 not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese confidence = 0.01
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - EUC-JP not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - GB2312 not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - EUC-KR not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - CP949 not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - Big5 not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - EUC-TW not active
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - windows-1251 Russian confidence = 0.01
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - KOI8-R Russian confidence = 0.01
+2022-05-29 04:56:33,383 - chardet.charsetprober - DEBUG - ISO-8859-5 Russian confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - MacCyrillic Russian confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - IBM866 Russian confidence = 0.0
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - IBM855 Russian confidence = 0.0
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - ISO-8859-7 Greek confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - windows-1253 Greek confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - ISO-8859-5 Bulgairan confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - windows-1251 Bulgarian confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - TIS-620 Thai confidence = 0.01
+2022-05-29 04:56:33,384 - chardet.charsetprober - DEBUG - ISO-8859-9 Turkish confidence = 0.2404779327142744
+2022-05-29 04:56:33,385 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,385 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,385 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - EUC-JP Japanese prober hit error at byte 1
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - GB2312 Chinese prober hit error at byte 4
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - EUC-KR Korean prober hit error at byte 1
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - CP949 Korean prober hit error at byte 4
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - Big5 Chinese prober hit error at byte 1
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - EUC-TW Taiwan prober hit error at byte 1
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - utf-8 not active
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese confidence = 0.01
+2022-05-29 04:56:33,386 - chardet.charsetprober - DEBUG - EUC-JP not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - GB2312 not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - EUC-KR not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - CP949 not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - Big5 not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - EUC-TW not active
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - windows-1251 Russian confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - KOI8-R Russian confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - ISO-8859-5 Russian confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - MacCyrillic Russian confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - IBM866 Russian confidence = 0.0
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - IBM855 Russian confidence = 0.0
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - ISO-8859-7 Greek confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - windows-1253 Greek confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - ISO-8859-5 Bulgairan confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - windows-1251 Bulgarian confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - TIS-620 Thai confidence = 0.01
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - ISO-8859-9 Turkish confidence = 0.2404779327142744
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,387 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,388 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,390 - chardet.charsetprober - DEBUG - EUC-JP Japanese prober hit error at byte 13
+2022-05-29 04:56:33,390 - chardet.charsetprober - DEBUG - GB2312 Chinese prober hit error at byte 16
+2022-05-29 04:56:33,390 - chardet.charsetprober - DEBUG - EUC-KR Korean prober hit error at byte 13
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - CP949 Korean prober hit error at byte 16
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - Big5 Chinese prober hit error at byte 13
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - EUC-TW Taiwan prober hit error at byte 13
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - utf-8 not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese confidence = 0.01
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - EUC-JP not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - GB2312 not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - EUC-KR not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - CP949 not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - Big5 not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - EUC-TW not active
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - windows-1251 Russian confidence = 0.01
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - KOI8-R Russian confidence = 0.01
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - ISO-8859-5 Russian confidence = 0.01
+2022-05-29 04:56:33,391 - chardet.charsetprober - DEBUG - MacCyrillic Russian confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - IBM866 Russian confidence = 0.0
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - IBM855 Russian confidence = 0.0
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - ISO-8859-7 Greek confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - windows-1253 Greek confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - ISO-8859-5 Bulgairan confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - windows-1251 Bulgarian confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - TIS-620 Thai confidence = 0.01
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - ISO-8859-9 Turkish confidence = 0.3039006841993578
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,392 - chardet.charsetprober - DEBUG - EUC-JP Japanese prober hit error at byte 13
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - GB2312 Chinese prober hit error at byte 16
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - EUC-KR Korean prober hit error at byte 13
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - CP949 Korean prober hit error at byte 16
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - Big5 Chinese prober hit error at byte 13
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - EUC-TW Taiwan prober hit error at byte 13
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - utf-8 not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese confidence = 0.01
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - EUC-JP not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - GB2312 not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - EUC-KR not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - CP949 not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - Big5 not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - EUC-TW not active
+2022-05-29 04:56:33,393 - chardet.charsetprober - DEBUG - windows-1251 Russian confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - KOI8-R Russian confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - ISO-8859-5 Russian confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - MacCyrillic Russian confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - IBM866 Russian confidence = 0.0
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - IBM855 Russian confidence = 0.0
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - ISO-8859-7 Greek confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - windows-1253 Greek confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - ISO-8859-5 Bulgairan confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - windows-1251 Bulgarian confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - TIS-620 Thai confidence = 0.01
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - ISO-8859-9 Turkish confidence = 0.3039006841993578
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,394 - chardet.charsetprober - DEBUG - windows-1255 Hebrew confidence = 0.0
+2022-05-29 04:56:33,490 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:57:18,868 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:57:47,639 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55968), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:57:47,640 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:58:10,760 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 04:59:05,254 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 04:59:26,515 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55996), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 04:59:26,516 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 04:59:26,522 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 89, in START
+    print(_2real_email(message['From'], all_user))
+NameError: name '_2real_email' is not defined
+2022-05-29 05:00:16,997 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:00:41,604 - root - DEBUG - Message received from Peer: ('127.0.0.1', 55998), From: b'<b08902020@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 05:00:41,605 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 05:01:04,195 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 05:04:12,910 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:04:43,718 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:04:57,176 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56028), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:04:57,178 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:05:20,493 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:06:26,628 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:06:52,861 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:07:14,017 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56056), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:07:14,017 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:07:39,107 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:08:36,574 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56084), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:08:36,691 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:09:07,929 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:09:24,623 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56110), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:09:24,623 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:09:49,491 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:11:20,881 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:11:57,875 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56140), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:11:57,876 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:12:23,049 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:14:17,937 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56172), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:14:18,041 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:14:47,610 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:19:30,684 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:19:57,134 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56204), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:19:57,136 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:19:58,028 - filelock - DEBUG - Attempting to acquire lock 140296662410912 on /root/.cache/huggingface/transformers/b7f45397ef5ce2c0ce54cfb02caf1695eef523900e490784cdc94893e8207670.d23f50bbddc3fb34db5a76d47fa9bdd5d75bf4201ad2d49abbcca25629b3e562.lock
+2022-05-29 05:19:58,029 - filelock - DEBUG - Lock 140296662410912 acquired on /root/.cache/huggingface/transformers/b7f45397ef5ce2c0ce54cfb02caf1695eef523900e490784cdc94893e8207670.d23f50bbddc3fb34db5a76d47fa9bdd5d75bf4201ad2d49abbcca25629b3e562.lock
+2022-05-29 05:19:58,892 - filelock - DEBUG - Attempting to release lock 140296662410912 on /root/.cache/huggingface/transformers/b7f45397ef5ce2c0ce54cfb02caf1695eef523900e490784cdc94893e8207670.d23f50bbddc3fb34db5a76d47fa9bdd5d75bf4201ad2d49abbcca25629b3e562.lock
+2022-05-29 05:19:58,893 - filelock - DEBUG - Lock 140296662410912 released on /root/.cache/huggingface/transformers/b7f45397ef5ce2c0ce54cfb02caf1695eef523900e490784cdc94893e8207670.d23f50bbddc3fb34db5a76d47fa9bdd5d75bf4201ad2d49abbcca25629b3e562.lock
+2022-05-29 05:19:59,759 - filelock - DEBUG - Attempting to acquire lock 140295134835136 on /root/.cache/huggingface/transformers/ac73c395193066c8ba1123db5a53f90b32b8e886b7d71f5763efaee453ff2f72.badf0c1b4d576657856e487b58b15ff19afed45e44846313371f2fbbbfe16d8d.lock
+2022-05-29 05:19:59,760 - filelock - DEBUG - Lock 140295134835136 acquired on /root/.cache/huggingface/transformers/ac73c395193066c8ba1123db5a53f90b32b8e886b7d71f5763efaee453ff2f72.badf0c1b4d576657856e487b58b15ff19afed45e44846313371f2fbbbfe16d8d.lock
+2022-05-29 05:20:00,624 - filelock - DEBUG - Attempting to release lock 140295134835136 on /root/.cache/huggingface/transformers/ac73c395193066c8ba1123db5a53f90b32b8e886b7d71f5763efaee453ff2f72.badf0c1b4d576657856e487b58b15ff19afed45e44846313371f2fbbbfe16d8d.lock
+2022-05-29 05:20:00,624 - filelock - DEBUG - Lock 140295134835136 released on /root/.cache/huggingface/transformers/ac73c395193066c8ba1123db5a53f90b32b8e886b7d71f5763efaee453ff2f72.badf0c1b4d576657856e487b58b15ff19afed45e44846313371f2fbbbfe16d8d.lock
+2022-05-29 05:20:02,372 - filelock - DEBUG - Attempting to acquire lock 140295126106944 on /root/.cache/huggingface/transformers/26163cc063f56bc814c4c16b9eb93d6a5d54482eff156731a1433333f3cded27.accd894ff58c6ff7bd4f3072890776c14f4ea34fcc08e79cd88c2d157756dceb.lock
+2022-05-29 05:20:02,373 - filelock - DEBUG - Lock 140295126106944 acquired on /root/.cache/huggingface/transformers/26163cc063f56bc814c4c16b9eb93d6a5d54482eff156731a1433333f3cded27.accd894ff58c6ff7bd4f3072890776c14f4ea34fcc08e79cd88c2d157756dceb.lock
+2022-05-29 05:20:03,857 - filelock - DEBUG - Attempting to release lock 140295126106944 on /root/.cache/huggingface/transformers/26163cc063f56bc814c4c16b9eb93d6a5d54482eff156731a1433333f3cded27.accd894ff58c6ff7bd4f3072890776c14f4ea34fcc08e79cd88c2d157756dceb.lock
+2022-05-29 05:20:03,858 - filelock - DEBUG - Lock 140295126106944 released on /root/.cache/huggingface/transformers/26163cc063f56bc814c4c16b9eb93d6a5d54482eff156731a1433333f3cded27.accd894ff58c6ff7bd4f3072890776c14f4ea34fcc08e79cd88c2d157756dceb.lock
+2022-05-29 05:20:04,732 - filelock - DEBUG - Attempting to acquire lock 140295126277760 on /root/.cache/huggingface/transformers/39a8f2bbf976bd7568ccaedf87acae9c0be7abe5879a1dd0f03bddcbae11a7bb.660ed5c7513bf13d4607410502a84e0de517eb889ff8c401068a1688868e1ccb.lock
+2022-05-29 05:20:04,733 - filelock - DEBUG - Lock 140295126277760 acquired on /root/.cache/huggingface/transformers/39a8f2bbf976bd7568ccaedf87acae9c0be7abe5879a1dd0f03bddcbae11a7bb.660ed5c7513bf13d4607410502a84e0de517eb889ff8c401068a1688868e1ccb.lock
+2022-05-29 05:20:06,616 - filelock - DEBUG - Attempting to release lock 140295126277760 on /root/.cache/huggingface/transformers/39a8f2bbf976bd7568ccaedf87acae9c0be7abe5879a1dd0f03bddcbae11a7bb.660ed5c7513bf13d4607410502a84e0de517eb889ff8c401068a1688868e1ccb.lock
+2022-05-29 05:20:06,616 - filelock - DEBUG - Lock 140295126277760 released on /root/.cache/huggingface/transformers/39a8f2bbf976bd7568ccaedf87acae9c0be7abe5879a1dd0f03bddcbae11a7bb.660ed5c7513bf13d4607410502a84e0de517eb889ff8c401068a1688868e1ccb.lock
+2022-05-29 05:20:07,484 - filelock - DEBUG - Attempting to acquire lock 140295126107664 on /root/.cache/huggingface/transformers/61528b560cd424dcc60716cf16407d725a7e28964b3282ae1e551f07bd4fa927.5cc6e825eb228a7a5cfd27cb4d7151e97a79fb962b31aaf1813aa102e746584b.lock
+2022-05-29 05:20:07,486 - filelock - DEBUG - Lock 140295126107664 acquired on /root/.cache/huggingface/transformers/61528b560cd424dcc60716cf16407d725a7e28964b3282ae1e551f07bd4fa927.5cc6e825eb228a7a5cfd27cb4d7151e97a79fb962b31aaf1813aa102e746584b.lock
+2022-05-29 05:20:08,350 - filelock - DEBUG - Attempting to release lock 140295126107664 on /root/.cache/huggingface/transformers/61528b560cd424dcc60716cf16407d725a7e28964b3282ae1e551f07bd4fa927.5cc6e825eb228a7a5cfd27cb4d7151e97a79fb962b31aaf1813aa102e746584b.lock
+2022-05-29 05:20:08,350 - filelock - DEBUG - Lock 140295126107664 released on /root/.cache/huggingface/transformers/61528b560cd424dcc60716cf16407d725a7e28964b3282ae1e551f07bd4fa927.5cc6e825eb228a7a5cfd27cb4d7151e97a79fb962b31aaf1813aa102e746584b.lock
+2022-05-29 05:20:09,216 - filelock - DEBUG - Attempting to acquire lock 140295117408672 on /root/.cache/huggingface/transformers/f43c3ae234cfe0afc79b85fd440ab5fb143303246ae56797cc1b70a7c3edad43.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d.lock
+2022-05-29 05:20:09,218 - filelock - DEBUG - Lock 140295117408672 acquired on /root/.cache/huggingface/transformers/f43c3ae234cfe0afc79b85fd440ab5fb143303246ae56797cc1b70a7c3edad43.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d.lock
+2022-05-29 05:20:10,064 - filelock - DEBUG - Attempting to release lock 140295117408672 on /root/.cache/huggingface/transformers/f43c3ae234cfe0afc79b85fd440ab5fb143303246ae56797cc1b70a7c3edad43.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d.lock
+2022-05-29 05:20:10,064 - filelock - DEBUG - Lock 140295117408672 released on /root/.cache/huggingface/transformers/f43c3ae234cfe0afc79b85fd440ab5fb143303246ae56797cc1b70a7c3edad43.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d.lock
+2022-05-29 05:22:11,533 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:22:45,805 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56238), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:22:45,806 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:24:25,289 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:24:48,955 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56260), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:24:48,956 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:31:54,477 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:32:23,367 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56292), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:32:23,368 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:39:01,451 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:39:17,664 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56318), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:39:17,665 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:42:13,131 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:46:17,305 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:46:39,161 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56346), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:46:39,164 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:46:40,028 - filelock - DEBUG - Attempting to acquire lock 139843997030048 on /root/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79.lock
+2022-05-29 05:46:40,030 - filelock - DEBUG - Lock 139843997030048 acquired on /root/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79.lock
+2022-05-29 05:46:40,895 - filelock - DEBUG - Attempting to release lock 139843997030048 on /root/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79.lock
+2022-05-29 05:46:40,895 - filelock - DEBUG - Lock 139843997030048 released on /root/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79.lock
+2022-05-29 05:46:41,749 - filelock - DEBUG - Attempting to acquire lock 139842469470656 on /root/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e.lock
+2022-05-29 05:46:41,751 - filelock - DEBUG - Lock 139842469470656 acquired on /root/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e.lock
+2022-05-29 05:46:42,613 - filelock - DEBUG - Attempting to release lock 139842469470656 on /root/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e.lock
+2022-05-29 05:46:42,613 - filelock - DEBUG - Lock 139842469470656 released on /root/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e.lock
+2022-05-29 05:46:44,292 - filelock - DEBUG - Attempting to acquire lock 139842460751376 on /root/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99.lock
+2022-05-29 05:46:44,293 - filelock - DEBUG - Lock 139842460751376 acquired on /root/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99.lock
+2022-05-29 05:46:46,301 - filelock - DEBUG - Attempting to release lock 139842460751376 on /root/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99.lock
+2022-05-29 05:46:46,301 - filelock - DEBUG - Lock 139842460751376 released on /root/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99.lock
+2022-05-29 05:46:47,143 - filelock - DEBUG - Attempting to acquire lock 139842460921472 on /root/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4.lock
+2022-05-29 05:46:47,143 - filelock - DEBUG - Lock 139842460921472 acquired on /root/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4.lock
+2022-05-29 05:46:49,400 - filelock - DEBUG - Attempting to release lock 139842460921472 on /root/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4.lock
+2022-05-29 05:46:49,400 - filelock - DEBUG - Lock 139842460921472 released on /root/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4.lock
+2022-05-29 05:46:55,283 - filelock - DEBUG - Attempting to acquire lock 139842458261824 on /root/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f.lock
+2022-05-29 05:46:55,285 - filelock - DEBUG - Lock 139842458261824 acquired on /root/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f.lock
+2022-05-29 05:47:34,277 - filelock - DEBUG - Attempting to release lock 139842458261824 on /root/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f.lock
+2022-05-29 05:47:34,277 - filelock - DEBUG - Lock 139842458261824 released on /root/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f.lock
+2022-05-29 05:47:47,102 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:48:27,832 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:48:59,726 - root - DEBUG - Message received from Peer: ('127.0.0.1', 56386), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:48:59,727 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:56:26,489 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:59:05,405 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 05:59:14,152 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60222), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:59:14,153 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 05:59:48,758 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 05:59:48,802 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60224), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 05:59:48,939 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:01:03,325 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:01:03,344 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60228), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:01:03,397 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:03:54,536 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:04:14,504 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60320), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:04:14,505 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:04:50,109 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:04:50,153 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60342), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:04:50,254 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:05:52,340 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:05:52,365 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60322), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:05:52,407 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:06:26,231 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:09:14,290 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60388), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:09:14,292 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:09:50,008 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:09:50,059 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60390), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:09:50,163 - root - ERROR - Exception while processing message from Peer: ('127.0.0.1', 60390), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/server.py", line 284, in process_message
+    routing.Router.deliver(mail.MailRequest(Peer, From, To, Data))
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 354, in deliver
+    self.reload()
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 438, in reload
+    reload(sys.modules[module])
+  File "/usr/lib/python3.8/importlib/__init__.py", line 169, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 604, in _exec
+  File "<frozen importlib._bootstrap_external>", line 844, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 981, in get_code
+  File "<frozen importlib._bootstrap_external>", line 911, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/team7/test_project/app/handlers/sample.py", line 100
+    Html=f'<html charset="UTF-8"><body>{message.body().decode('utf-8')}</body></html>'
+                                                               ^
+SyntaxError: invalid syntax
+2022-05-29 06:09:50,181 - root - ERROR - Failed to deliver message because of "Error in message ('127.0.0.1', 60390):b'<b08902035@ntu.edu.tw>':b'<b08902020@example.com>', look in logs.", put it in undeliverable queue with key '1653804590.M171779P2143Q1.team7'
+2022-05-29 06:10:08,889 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60416), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:10:08,893 - root - ERROR - Exception while processing message from Peer: ('127.0.0.1', 60416), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/server.py", line 284, in process_message
+    routing.Router.deliver(mail.MailRequest(Peer, From, To, Data))
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 354, in deliver
+    self.reload()
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 438, in reload
+    reload(sys.modules[module])
+  File "/usr/lib/python3.8/importlib/__init__.py", line 169, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 604, in _exec
+  File "<frozen importlib._bootstrap_external>", line 844, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 981, in get_code
+  File "<frozen importlib._bootstrap_external>", line 911, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/team7/test_project/app/handlers/sample.py", line 100
+    Html=f'<html charset="UTF-8"><body>{message.body().decode('utf-8')}</body></html>'
+                                                               ^
+SyntaxError: invalid syntax
+2022-05-29 06:10:08,896 - root - ERROR - Failed to deliver message because of "Error in message ('127.0.0.1', 60416):b'<b08902035@ntu.edu.tw>':b'<b08902020@example.com>', look in logs.", put it in undeliverable queue with key '1653804608.M894475P2143Q2.team7'
+2022-05-29 06:11:59,147 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60420), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:11:59,148 - root - ERROR - Exception while processing message from Peer: ('127.0.0.1', 60420), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/server.py", line 284, in process_message
+    routing.Router.deliver(mail.MailRequest(Peer, From, To, Data))
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 354, in deliver
+    self.reload()
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 438, in reload
+    reload(sys.modules[module])
+  File "/usr/lib/python3.8/importlib/__init__.py", line 169, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 604, in _exec
+  File "<frozen importlib._bootstrap_external>", line 844, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 981, in get_code
+  File "<frozen importlib._bootstrap_external>", line 911, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/team7/test_project/app/handlers/sample.py", line 101
+    Html=f'<html charset="UTF-8"><body>{str(message.body()).decode('utf-8')}</body></html>'
+                                                                    ^
+SyntaxError: invalid syntax
+2022-05-29 06:11:59,151 - root - ERROR - Failed to deliver message because of "Error in message ('127.0.0.1', 60420):b'<b08902035@ntu.edu.tw>':b'<b08902020@example.com>', look in logs.", put it in undeliverable queue with key '1653804719.M148783P2143Q3.team7'
+2022-05-29 06:15:40,460 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:15:58,749 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60426), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:15:58,750 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:16:37,674 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:18:21,684 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60452), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:18:21,819 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:18:21,832 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 94, in START
+    decoding = message.body().decode('utf-8')
+AttributeError: 'str' object has no attribute 'decode'
+2022-05-29 06:19:14,871 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60456), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:19:14,884 - routing - DEBUG - Message to 'b08902020@example.com' from 'b08902035@ntu.edu.tw' undeliverable, putting in undeliverable queue (# of recipients: 21).
+2022-05-29 06:20:02,966 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60458), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:20:02,968 - routing - DEBUG - Message to 'b08902020@example.com' from 'b08902035@ntu.edu.tw' undeliverable, putting in undeliverable queue (# of recipients: 21).
+2022-05-29 06:20:50,483 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:21:03,102 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60462), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:21:03,103 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:21:38,072 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:27:15,603 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:27:43,904 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60488), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:27:43,905 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:28:18,954 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:30:12,866 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:30:32,668 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60514), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:30:32,669 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:31:08,153 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:31:59,319 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:32:12,033 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60538), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:32:12,034 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:32:48,785 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:34:14,032 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:34:26,348 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60564), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:34:26,349 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:35:01,498 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:40:22,840 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60588), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:40:23,001 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:41:27,488 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:44:14,839 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60614), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:44:14,944 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:45:00,425 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:45:09,293 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60636), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:45:09,294 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:45:45,714 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 06:46:53,577 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:47:11,752 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60662), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 06:47:11,754 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 06:47:47,678 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 06:48:37,741 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:49:45,343 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:50:24,699 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60686), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 06:50:24,700 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 06:50:24,713 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 06:51:16,749 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:51:26,335 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60694), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 06:51:26,336 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 06:51:26,344 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 06:51:55,086 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:52:11,051 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60700), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 06:52:11,052 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 06:52:11,059 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 06:54:14,621 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60708), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:54:14,625 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:54:14,630 - routing - ERROR - !!! ERROR handling app.handlers.sample.START
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 380, in call_safely
+    func(message, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/salmon/routing.py", line 503, in routing_wrapper
+    next_state = func(message, *args, **kw)
+  File "/home/team7/test_project/app/handlers/sample.py", line 107, in START
+    response.base.content_encoding['Content-Type'] = {'text/html', {"charset": "utf-8"}}
+TypeError: unhashable type: 'dict'
+2022-05-29 06:54:36,290 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:54:45,247 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60712), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902035@example.com>'.
+2022-05-29 06:54:45,248 - routing - DEBUG - Matched 'b08902035@example.com' against START.
+2022-05-29 06:54:45,257 - routing - DEBUG - Message to b08902035@example.com was handled by app.handlers.sample.START
+2022-05-29 06:57:15,746 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 06:57:32,002 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60718), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 06:57:32,004 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 06:57:32,013 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:00:04,609 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:00:17,425 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60724), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:00:17,426 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:00:17,434 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:02:35,809 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:02:48,747 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60732), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:02:48,748 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:02:48,758 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:04:38,281 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:04:50,076 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60740), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:04:50,077 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:04:50,086 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:05:36,968 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:05:50,836 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60748), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:05:50,837 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:05:50,845 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:06:36,535 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:06:47,169 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60754), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:06:47,170 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:06:47,179 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START
+2022-05-29 07:07:06,108 - root - INFO - LMTPReceiver started on <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8823)>.
+2022-05-29 07:07:15,082 - root - DEBUG - Message received from Peer: ('127.0.0.1', 60760), From: b'<b08902035@ntu.edu.tw>', to To b'<b08902020@example.com>'.
+2022-05-29 07:07:15,083 - routing - DEBUG - Matched 'b08902020@example.com' against START.
+2022-05-29 07:07:15,092 - routing - DEBUG - Message to b08902020@example.com was handled by app.handlers.sample.START

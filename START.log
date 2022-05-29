@@ -1,0 +1,58 @@
+0
+Received : from [127.0.1.1] (localhost [127.0.0.1])
+	by mail.example.com (Postfix) with ESMTP id 1822063D52
+	for <why@example.com>; Sat, 28 May 2022 12:19:19 +0000 (UTC)
+To : why@example.com
+From : hank@example.com
+Message-Id : <20220528121919.1822063D52@mail.example.com>
+Date : Sat, 28 May 2022 12:19:19 +0000 (UTC)
+Content-Type : multipart/alternative
+Subject : [SPAM][SPAM][SPAM]Hello!!
+body:  Hi
+to msg:  Received: from [127.0.1.1] (localhost [127.0.0.1])
+	by mail.example.com (Postfix) with ESMTP id 1822063D52
+	for <why@example.com>; Sat, 28 May 2022 12:19:19 +0000 (UTC)
+To: why@example.com
+From: hank@example.com
+Message-Id: <20220528121919.1822063D52@mail.example.com>
+Date: Sat, 28 May 2022 12:19:19 +0000 (UTC)
+Subject: [SPAM][SPAM][SPAM]Hello!!
+Content-Type: multipart/alternative; boundary="===============2654153769185746122=="
+
+--===============2654153769185746122==
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+
+Hi
+--===============2654153769185746122==
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Type: text/html; charset="us-ascii"
+
+<html><body>Hi</body></html>
+--===============2654153769185746122==--
+
+to msg type:  <class 'salmon.encoding.MIMEPart'>
+<class 'salmon.mail.MailRequest'>
+456
+123
+To: why@example.com
+From: hank@example.com
+Subject: [SPAM][SPAM][SPAM]Hello!!
+Content-Type: multipart/alternative; boundary="===============8773072142878733203=="
+
+--===============8773072142878733203==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Hi
+--===============8773072142878733203==
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+<html><body>Hi</body></html>
+--===============8773072142878733203==--
+
