@@ -80,19 +80,23 @@ def START(message, address=None, host=None):
 
             return START
 
+    prefix = ""
     for k in lists[userTo].keys():
         if userFrom in lists[userTo][k]:
             if k == "BLACKLIST":
                 print("DISCARDED")
                 return START
-            message['subject'] = f"[{k}] " + message['subject']
+            prefix = f"[{k}] " + prefix
+            # message['subject'] = f"[{k}] " + message['subject']
 
     print(type(message.body()))
     decoding = message.body().encode().decode('utf-8')
     print(message.body(), decoding)
     # label = classifier(message)
     # if label == 0:
-    # message['subject'] = "[SPAM] " + message['subject']
+    #     prefix = "[SPAM] " + prefix
+    
+    message['subject'] = prefix + message['subject']
     response = MailResponse(
         Body=message.body(),
         To=users['register'][userTo],
