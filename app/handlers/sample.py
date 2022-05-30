@@ -63,7 +63,7 @@ def START(message, address=None, host=None):
                 content = 'Already registered.'
             else:
                 users['register'][userFrom] = message['From']
-                content = 'Registeration successful.'
+                content = 'Registeration success.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
                     print(f"{userFrom}@example.com {userFrom}", file=postfixRegister)
                 os.system("postmap /etc/postfix/virtual")
@@ -97,17 +97,14 @@ def START(message, address=None, host=None):
     #     prefix = "[SPAM] " + prefix
     
     message['subject'] = prefix + message['subject']
+    body = message.body().encode('uft-8').decode('unicode-escape')
     response = MailResponse(
-        Body=message.body(),
+        Body=body,
         To=users['register'][userTo],
         From=message['From'],
         Subject=message['subject'],
-        Html=f'<html><meta charset="UTF-8">你好</html>'
+        Html=f'<html><body>{body}</body></html>'
     )
-    print(response.base.content_encoding['Content-Type'])
-    response.base.content_encoding['Content-Type'] = (
-        'html', {"charset": "utf-8"})
-    print(response.base.content_encoding['Content-Type'])
     relay = Relay()
     relay.deliver(response)
 
