@@ -31,6 +31,7 @@ def START(message, address=None, host=None):
     with open('/home/team7/lists.json', 'r') as listfp:
         lists = json.load(listfp)
         lists = defaultdict(lambda: defaultdict(list), lists)
+        print(lists)
 
     with open('/home/team7/users.json', 'r') as userfp:
         users = json.load(userfp)
@@ -38,9 +39,10 @@ def START(message, address=None, host=None):
 
     message['From'] = removeBracket(message['From'])
     message['To'] = removeBracket(message['To'])
+        
     userTo, userFrom = email2id(message['To']), email2id(message['From'])
-
     if len(message['subject']) >= 11 and message['subject'][:11] == 'ADD TO LIST':
+        print('ADD TO LIST')
         with open('/home/team7/lists.json', 'w') as listfp:
             # find list key
             key_start = message['subject'].find('"') + 1
@@ -48,7 +50,10 @@ def START(message, address=None, host=None):
             if key_end == -1:
                 return START
             key = message['subject'][key_start: key_end]
-            lists[userFrom][key].append(userTo)
+            if key not in lists[userFrom].keys():
+                lists[userFrom][key] = [userTo]
+            else:
+                lists[userFrom][key].append(userTo)
             json.dump(lists, listfp, indent=4)
             return START
     elif message['subject'] == 'BAN':
@@ -69,7 +74,7 @@ def START(message, address=None, host=None):
                 )
             else:
                 users['register'][userFrom] = message['From']
-                content = 'Registeration success.'
+                content     = 'Registeration success.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
                     print(f"{userFrom}@example.com {userFrom}",
                           file=postfixRegister)
@@ -87,6 +92,16 @@ def START(message, address=None, host=None):
 
             return START
 
+    if message['From'][-12:] != '@example.com':
+        with open('/home/team7/users.json', 'w') as userfp:
+            users['register'][message['From'].replace('@', '+')] = message['From']
+            json.dump(users, userfp, indent=4)
+        with open("/etc/postfix/virtual", "a") as postfixRegister:
+            print(f"{message['From'].replace('@', '+')}@example.com {message['From'].replace('@', '+')}",
+                    file=postfixRegister)
+        os.system("postmap /etc/postfix/virtual")
+        message['From'] = message['From'].replace('@', '+') + '@example.com'
+
     prefix = ""
     for k in lists[userTo].keys():
         if userFrom in lists[userTo][k]:
@@ -94,17 +109,16 @@ def START(message, address=None, host=None):
                 print("DISCARDED")
                 return START
             prefix = f"[{k}] " + prefix
-            # message['subject'] = f"[{k}] " + message['subject']
 
-    print(type(message.body()))
-    decoding = message.body().encode().decode('utf-8')
-    print(message.body(), decoding)
-    # label = classifier(message)
+    # print(type(message.body()))
+    # decoding = message.body().encode().decode('utf-8')
+    # print(message.body(), decoding)
+    # # label = classifier(message)
     # if label == 0:
     #     prefix = "[SPAM] " + prefix
 
     message['subject'] = prefix + message['subject']
-    body = message.body().encode('uft-8').decode('unicode-escape')
+    body = message.body().encode().decode('unicode-escape')
     response = MailResponse(
         Body=body,
         To=users['register'][userTo],
