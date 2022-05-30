@@ -60,21 +60,28 @@ def START(message, address=None, host=None):
         with open('/home/team7/users.json', 'w') as userfp:
             if userFrom in users['register']:
                 # already registered
-                content = 'Already registered.'
+                response = MailResponse(
+                    Body='Already registered.',
+                    To=message['From'],
+                    From=ADMIN,
+                    Subject="Admin's reply for registeration.",
+                    Html=f'<html><body style="color: red">Already registered.</body></html>'
+                )
             else:
                 users['register'][userFrom] = message['From']
                 content = 'Registeration success.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
-                    print(f"{userFrom}@example.com {userFrom}", file=postfixRegister)
+                    print(f"{userFrom}@example.com {userFrom}",
+                          file=postfixRegister)
                 os.system("postmap /etc/postfix/virtual")
+                response = MailResponse(
+                    Body=content,
+                    To=message['From'],
+                    From=ADMIN,
+                    Subject="Admin's reply for registeration.",
+                    Html=f'<html><body><p style="color: green">Registeration success.</p><p>Your protected email is: {userFrom}@example.com</p></body></html>'
+                )
             json.dump(users, userfp, indent=4)
-            response = MailResponse(
-                Body=content,
-                To=message['From'],
-                From=ADMIN,
-                Subject="Admin's reply for registeration.",
-                Html=f'<html><body style="color: red">{content}</body></html>'
-            )
             relay = Relay()
             relay.deliver(response)
 
@@ -95,7 +102,7 @@ def START(message, address=None, host=None):
     # label = classifier(message)
     # if label == 0:
     #     prefix = "[SPAM] " + prefix
-    
+
     message['subject'] = prefix + message['subject']
     body = message.body().encode('uft-8').decode('unicode-escape')
     response = MailResponse(
