@@ -58,7 +58,10 @@ def START(message, address=None, host=None):
             return START
     elif message['subject'] == 'BAN':
         with open('/home/team7/lists.json', 'w') as listfp:
-            lists[userFrom]['BLACKLIST'].append(userTo)
+            if 'BLACKLIST' in lists[userFrom].keys():
+                lists[userFrom]['BLACKLIST'].append(userTo)
+            else:
+                lists[userFrom]['BLACKLIST'] = [userTo]
             json.dump(lists, listfp, indent=4)
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
@@ -113,9 +116,10 @@ def START(message, address=None, host=None):
     # print(type(message.body()))
     # decoding = message.body().encode().decode('utf-8')
     # print(message.body(), decoding)
-    # # label = classifier(message)
-    # if label == 0:
-    #     prefix = "[SPAM] " + prefix
+    label = classifier(message)
+    if label == 1:
+        prefix = "[SPAM] " + prefix
+    print("LABELLLLLL:", label)
 
     message['subject'] = prefix + message['subject']
     body = message.body().encode().decode('unicode-escape')
