@@ -121,14 +121,19 @@ def START(message, address=None, host=None):
 
     if message['From'][-12:] != '@example.com':
         with open('/home/team7/users.json', 'w') as userfp:
+            exist = False
+            if message['From'].replace('@', '+') in users['register'].keys():
+                exist = True
             users['register'][message['From'].replace(
                 '@', '+')] = message['From']
             json.dump(users, userfp, indent=4)
-        with open("/etc/postfix/virtual", "a") as postfixRegister:
-            print(f"{message['From'].replace('@', '+')}@example.com {message['From'].replace('@', '+')}",
-                  file=postfixRegister)
-        os.system("postmap /etc/postfix/virtual")
+        if not exist:
+            with open("/etc/postfix/virtual", "a") as postfixRegister:
+                print(f"{message['From'].replace('@', '+')}@example.com {message['From'].replace('@', '+')}",
+                    file=postfixRegister)
+            os.system("postmap /etc/postfix/virtual")
         message['From'] = message['From'].replace('@', '+') + '@example.com'
+        userFrom = email2id(message['From'])
 
     prefixs = []
     for k in lists[userTo].keys():
@@ -143,7 +148,7 @@ def START(message, address=None, host=None):
     if label == 1:
         prefixs.insert(0, "[SPAM]")
 
-    subject_prefix = ' '.join(prefixs) + ' '
+    subject_prefix = '' if (len(prefixs) == 0) else ' '.join(prefixs) + ' '
     message['subject'] = subject_prefix + message['subject']
     body = message.body().encode().decode('unicode-escape')
     response = MailResponse(
