@@ -56,13 +56,39 @@ def START(message, address=None, host=None):
                 lists[userFrom][key].append(userTo)
             json.dump(lists, listfp, indent=4)
             return START
+    if len(message['subject']) >= 16 and message['subject'][:16] == 'REMOVE FROM LIST':
+        print('REMOVE FROM LIST')
+        with open('/home/team7/lists.json', 'w') as listfp:
+            # find list key
+            key_start = message['subject'].find('"') + 1
+            key_end = message['subject'].find('"', key_start)
+            if key_end == -1:
+                return START
+            key = message['subject'][key_start: key_end]
+            if key not in lists[userFrom].keys():
+                return START
+            else:
+                if userTo in lists[userFrom][key]:
+                    lists[userFrom][key].remove(userTo)
+            json.dump(lists, listfp, indent=4)
+            return START
     elif message['subject'] == 'BAN':
+        print(f'BAN {userTo}')
         with open('/home/team7/lists.json', 'w') as listfp:
             if 'BLACKLIST' in lists[userFrom].keys():
                 lists[userFrom]['BLACKLIST'].append(userTo)
             else:
                 lists[userFrom]['BLACKLIST'] = [userTo]
             json.dump(lists, listfp, indent=4)
+            return START
+    elif message['subject'] == 'UNBAN':
+        print(f'UNBAN {userTo}')
+        with open('/home/team7/lists.json', 'w') as listfp:
+            if 'BLACKLIST' not in lists[userFrom].keys() or userTo not in lists[userFrom]['BLACKLIST']:
+                return START
+            lists[userFrom]['BLACKLIST'].remove(userTo)
+            json.dump(lists, listfp, indent=4)
+
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
         with open('/home/team7/users.json', 'w') as userfp:
