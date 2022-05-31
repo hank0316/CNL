@@ -141,7 +141,7 @@ def START(message, address=None, host=None):
 
     label = classifier(message)
     if label == 1:
-        prefixs.append("[SPAM]")
+        prefixs.insert(0, "[SPAM]")
 
     subject_prefix = ' '.join(prefixs) + ' '
     message['subject'] = subject_prefix + message['subject']
