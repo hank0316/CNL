@@ -1,13 +1,10 @@
 from salmon.routing import route, route_like
-from salmon.utils import settings
-# from salmon.testing import RouterConversation, queue, relay
 from salmon.mail import MailResponse
 from salmon.server import Relay
 
 from .filter import classifier
 
 import json
-import re
 from collections import defaultdict
 from datetime import date
 import os
@@ -42,7 +39,7 @@ def START(message, address=None, host=None):
 
     message['From'] = removeBracket(message['From'])
     message['To'] = removeBracket(message['To'])
-        
+
     userTo, userFrom = email2id(message['To']), email2id(message['From'])
     if len(message['subject']) >= 11 and message['subject'][:11] == 'ADD TO LIST':
         print('ADD TO LIST')
@@ -59,7 +56,7 @@ def START(message, address=None, host=None):
                 lists[userFrom][key].append(userTo)
             json.dump(lists, listfp, indent=4)
             return START
-    if len(message['subject']) >= 16 and message['subject'][:16] == 'REMOVE FROM LIST':
+    elif len(message['subject']) >= 16 and message['subject'][:16] == 'REMOVE FROM LIST':
         print('REMOVE FROM LIST')
         with open('/home/team7/lists.json', 'w') as listfp:
             # find list key
@@ -91,7 +88,6 @@ def START(message, address=None, host=None):
                 return START
             lists[userFrom]['BLACKLIST'].remove(userTo)
             json.dump(lists, listfp, indent=4)
-
             return START
     elif message['To'] == ADMIN and message['subject'] == 'REGISTER':
         with open('/home/team7/users.json', 'w') as userfp:
@@ -102,11 +98,11 @@ def START(message, address=None, host=None):
                     To=message['From'],
                     From=ADMIN,
                     Subject="Admin's reply for registeration.",
-                    Html=f'<html><body style="color: red">Already registered.</body></html>'
+                    Html=f'<html><body><div style="color: red">Already registered.</div></body></html>'
                 )
             else:
                 users['register'][userFrom] = message['From']
-                content     = 'Registeration success.'
+                content = 'Registeration success.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
                     print(f"{userFrom}@example.com {userFrom}",
                           file=postfixRegister)
@@ -116,43 +112,40 @@ def START(message, address=None, host=None):
                     To=message['From'],
                     From=ADMIN,
                     Subject="Admin's reply for registeration.",
-                    Html=f'<html><body><p style="color: green">Registeration success.</p><p>Your protected email is: {userFrom}@example.com</p></body></html>'
+                    Html=f'<html><body><div style="color: green">Registeration success.</div><div>Your protected email is: {userFrom}@example.com</div></body></html>'
                 )
             json.dump(users, userfp, indent=4)
             relay = Relay()
             relay.deliver(response)
-
             return START
 
     if message['From'][-12:] != '@example.com':
         with open('/home/team7/users.json', 'w') as userfp:
-            users['register'][message['From'].replace('@', '+')] = message['From']
+            users['register'][message['From'].replace(
+                '@', '+')] = message['From']
             json.dump(users, userfp, indent=4)
         with open("/etc/postfix/virtual", "a") as postfixRegister:
             print(f"{message['From'].replace('@', '+')}@example.com {message['From'].replace('@', '+')}",
-                    file=postfixRegister)
+                  file=postfixRegister)
         os.system("postmap /etc/postfix/virtual")
         message['From'] = message['From'].replace('@', '+') + '@example.com'
 
-    prefix = []
+    prefixs = []
     for k in lists[userTo].keys():
         print(f"prefixs: {k}")
         if userFrom in lists[userTo][k]:
             if k == "BLACKLIST":
                 print("DISCARDED")
                 return START
-            prefix.append(f"[{k}]")
+            prefixs.append(f"[{k}]")
 
-    mail_subject_prefix = ' '.join(prefix) + ' '
     label = classifier(message)
     if label == 1:
-        mail_subject_prefix = "[SPAM] " + mail_subject_prefix
-        prefix.append("[SPAM]")
-    print("LABELLLLLL:", label)
+        prefixs.append("[SPAM]")
 
-    message['subject'] = mail_subject_prefix + message['subject']
+    subject_prefix = ' '.join(prefixs) + ' '
+    message['subject'] = subject_prefix + message['subject']
     body = message.body().encode().decode('unicode-escape')
-    print(message.body().encode().decode('utf-8', "ignore"))
     response = MailResponse(
         Body=body,
         To=users['register'][userTo],
@@ -167,11 +160,12 @@ def START(message, address=None, host=None):
     today = date.today()
     d4 = today.strftime("%b-%d-%Y")
 
-    for p in prefix:
-        print(f"prefix: {p}")
-        _path = Path(f"/home/team7/Maildir/{userTo}/{p[1:-1]}/")
+    for prefix in prefixs:
+        print(f"prefixs: {prefix}")
+        _path = Path(f"/home/team7/Maildir/{userTo}/{prefix[1:-1]}/")
         _path.mkdir(parents=True, exist_ok=True)
-        _path = os.path.join(_path, f"{d4}-{message['subject'].replace(' ', '')}")
+        _path = os.path.join(
+            _path, f"{d4}-{message['subject'].replace(' ', '')}")
         with open(_path, 'w') as f:
             print(f"From: {message['From']}", file=f)
             print(f"To: {users['register'][userTo]}", file=f)
