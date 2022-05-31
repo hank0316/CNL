@@ -11,7 +11,7 @@ import os
 from pathlib import Path
 
 
-ADMIN = 'admin@example.com'
+ADMIN = 'admin@cnlteam7.com'
 
 
 def removeBracket(s):
@@ -104,7 +104,7 @@ def START(message, address=None, host=None):
                 users['register'][userFrom] = message['From']
                 content = 'Registeration success.'
                 with open("/etc/postfix/virtual", "a") as postfixRegister:
-                    print(f"{userFrom}@example.com {userFrom}",
+                    print(f"{userFrom}@cnlteam7 {userFrom}",
                           file=postfixRegister)
                 os.system("postmap /etc/postfix/virtual")
                 response = MailResponse(
@@ -112,14 +112,14 @@ def START(message, address=None, host=None):
                     To=message['From'],
                     From=ADMIN,
                     Subject="Admin's reply for registeration.",
-                    Html=f'<html><body><div style="color: green">Registeration success.</div><div>Your protected email is: {userFrom}@example.com</div></body></html>'
+                    Html=f'<html><body><div style="color: green">Registeration success.</div><div>Your protected email is: {userFrom}@cnlteam7</div></body></html>'
                 )
             json.dump(users, userfp, indent=4)
             relay = Relay()
             relay.deliver(response)
             return START
 
-    if message['From'][-12:] != '@example.com':
+    if len(message['From']) >= 13 and message['From'][-13:] != '@cnlteam7':
         with open('/home/team7/users.json', 'w') as userfp:
             exist = False
             if message['From'].replace('@', '+') in users['register'].keys():
@@ -129,10 +129,10 @@ def START(message, address=None, host=None):
             json.dump(users, userfp, indent=4)
         if not exist:
             with open("/etc/postfix/virtual", "a") as postfixRegister:
-                print(f"{message['From'].replace('@', '+')}@example.com {message['From'].replace('@', '+')}",
+                print(f"{message['From'].replace('@', '+')}@cnlteam7 {message['From'].replace('@', '+')}",
                     file=postfixRegister)
             os.system("postmap /etc/postfix/virtual")
-        message['From'] = message['From'].replace('@', '+') + '@example.com'
+        message['From'] = message['From'].replace('@', '+') + '@cnlteam7'
         userFrom = email2id(message['From'])
 
     prefixs = []
