@@ -9,7 +9,10 @@ from .filter import classifier
 import json
 import re
 from collections import defaultdict
+from datetime import date
 import os
+from pathlib import Path
+
 
 ADMIN = 'admin@example.com'
 
@@ -131,24 +134,25 @@ def START(message, address=None, host=None):
         os.system("postmap /etc/postfix/virtual")
         message['From'] = message['From'].replace('@', '+') + '@example.com'
 
-    prefix = ""
+    prefix = []
     for k in lists[userTo].keys():
+        print(f"prefixs: {k}")
         if userFrom in lists[userTo][k]:
             if k == "BLACKLIST":
                 print("DISCARDED")
                 return START
-            prefix = f"[{k}] " + prefix
+            prefix.append(f"[{k}]")
 
-    # print(type(message.body()))
-    # decoding = message.body().encode().decode('utf-8')
-    # print(message.body(), decoding)
+    mail_subject_prefix = ' '.join(prefix) + ' '
     label = classifier(message)
     if label == 1:
-        prefix = "[SPAM] " + prefix
+        mail_subject_prefix = "[SPAM] " + mail_subject_prefix
+        prefix.append("[SPAM]")
     print("LABELLLLLL:", label)
 
-    message['subject'] = prefix + message['subject']
+    message['subject'] = mail_subject_prefix + message['subject']
     body = message.body().encode().decode('unicode-escape')
+    print(message.body().encode().decode('utf-8', "ignore"))
     response = MailResponse(
         Body=body,
         To=users['register'][userTo],
@@ -159,9 +163,21 @@ def START(message, address=None, host=None):
     relay = Relay()
     relay.deliver(response)
 
-    with open(f"/home/team7/Maildir/{message['Message-Id']}", 'w') as f:
-        msg = message.to_message()
-        print(msg, file=f)
+    # Save mail to MailBox
+    today = date.today()
+    d4 = today.strftime("%b-%d-%Y")
+
+    for p in prefix:
+        print(f"prefix: {p}")
+        _path = Path(f"/home/team7/Maildir/{userTo}/{p[1:-1]}/")
+        _path.mkdir(parents=True, exist_ok=True)
+        _path = os.path.join(_path, f"{d4}-{message['subject'].replace(' ', '')}")
+        with open(_path, 'w') as f:
+            print(f"From: {message['From']}", file=f)
+            print(f"To: {users['register'][userTo]}", file=f)
+            print(f"Subject: {message['subject']}", file=f)
+            print("-------------------------\n", file=f)
+            print(message.body().encode().decode('utf-8', "ignore"), file=f)
 
     return START
 
